@@ -1,0 +1,9 @@
+services:
+  paddleocr:
+    container_name: paddleocrapi
+    build: .
+    environment:
+      - TZ=America/Fortaleza
+    ports:
+      - 9006:9006
+    restart: unless-stopped
