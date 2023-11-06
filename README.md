@@ -2,67 +2,67 @@
 
 ![GitHub](https://img.shields.io/github/license/cgcel/PaddleOCRFastAPI)
 
-[中文](https://github.com/cgcel/PaddleOCRFastAPI/blob/master/README_CN.md)
+[Inglês](https://github.com/cgcel/PaddleOCRFastAPI/blob/master/README_CN.md)
 
-A simple way to deploy `PaddleOCR` based on `FastAPI`.
+Uma maneira simples de implantar o `PaddleOCR` baseado em `FastAPI`.
 
-## Support Version
+## Versões Suportadas
 
 | PaddleOCR | Branch |
 | :--: | :--: |
 | v2.5 | [paddleocr-v2.5](https://github.com/cgcel/PaddleOCRFastAPI/tree/paddleocr-v2.5) |
 | v2.7 | [paddleocr-v2.7](https://github.com/cgcel/PaddleOCRFastAPI/tree/paddleocr-v2.7) |
 
-## Features
+## Recursos
 
-- [x] Local path image recognition
-- [x] Base64 data recognition
-- [x] Upload file recognition
+- [x] Reconhecimento de imagem pelo caminho local
+- [x] Reconhecimento de dados Base64
+- [x] Reconhecimento de arquivos enviados
 
-## Deployment Methods
+## Métodos de Implantação
 
-### Deploy Directly
+### Implantação Direta
 
-1. Copy the project to the deployment path
+1. Copie o projeto para o caminho de implantação
 
    ```shell
    git clone https://github.com/cgcel/PaddleOCRFastAPI.git
    ```
 
-   > *The master branch is the most recent version of PaddleOCR supported by the project. To install a specific version, clone the branch with the corresponding version number.*
+   > *A branch master é a versão mais recente do PaddleOCR suportada pelo projeto. Para instalar uma versão específica, clone a branch com o número da versão correspondente.*
 
-2. (Optional) Create new virtual environment to avoid dependency conflicts
-3. Install required dependencies
+2. (Opcional) Crie um novo ambiente virtual para evitar conflitos de dependências
+3. Instale as dependências necessárias
 
    ```shell
    pip3 install -r requirements.txt
    ```
 
-4. Run FastAPI
+4. Execute o FastAPI
 
    ```shell
    uvicorn main:app --host 0.0.0.0
    ```
 
-### Docker Deployment
+### Implantação com Docker
 
-Test completed in `Centos 7`, `Ubuntu 20.04`, `Ubuntu 22.04`, `Windows 10`, `Windows 11`, requires `Docker` to be installed.
+Testado e concluído em `Centos 7`, `Ubuntu 20.04`, `Ubuntu 22.04`, `Windows 10`, `Windows 11`, requer a instalação do `Docker`.
 
-1. Copy the project to the deployment path
+1. Copie o projeto para o caminho de implantação
 
    ```shell
    git clone https://github.com/cgcel/PaddleOCRFastAPI.git
    ```
 
-   > *The master branch is the most recent version of PaddleOCR supported by the project. To install a specific version, clone the branch with the corresponding version number.*
+   > *A branch master é a versão mais recente do PaddleOCR suportada pelo projeto. Para instalar uma versão específica, clone a branch com o número da versão correspondente.*
 
-2. Building a Docker Image
+2. Construa a Imagem do Docker
 
    ```shell
-   docker build -t paddleocrfastapi:<your_tag> .
+   docker build -t paddleocrfastapi:<sua_tag> .
    ```
 
-3. Edit `docker-compose.yml`
+3. Edite o `docker-compose.yml`
 
    ```yaml
    version: "3"
@@ -70,33 +70,40 @@ Test completed in `Centos 7`, `Ubuntu 20.04`, `Ubuntu 22.04`, `Windows 10`, `Win
    services:
 
      paddleocrfastapi:
-       container_name: paddleocrfastapi # Custom Container Name
-       image: paddleocrfastapi:<your_tag> # Customized Image Name & Label in Step 2
+       container_name: paddleocrfastapi # Nome do Container Personalizado
+       image: paddleocrfastapi:<sua_tag> # Nome da Imagem Personalizada e Rótulo de feito na Etapa 2
        environment:
          - TZ=Asia/Hong_Kong
        ports:
-        - 9006:9006 # Customize the service exposure port, 9006 is the default FastAPI port, do not modify
+        - 9006:9006 # Personalize a porta de exposição do serviço, 9006 é a porta padrão do FastAPI, não modifique
        restart: unless-stopped
    ```
 
-4. Create the Docker container and run
+4. Crie o contêiner do Docker e execute
 
    ```shell
    docker compose up -d
    ```
 
-5. Swagger Page at `localhost:<port>/docs`
+5. Página Swagger em `localhost:<port>/docs`
 
-## Screenshots
+## Imagens de tela
 
 ![Swagger](https://raw.githubusercontent.com/cgcel/PaddleOCRFastAPI/dev/screenshots/Swagger.png)
 
-## Todo
+## A fazer
 
-- [x] support ppocr v4
-- [ ] GPU mode
-- [x] Image url recognition
+- [x] suporte ao ppocr v4
+- [ ] modo GPU
+- [x] reconhecimento de URL da imagem
 
-## License
+## Licença
 
-**PaddleOCRFastAPI** is licensed under the MIT license. Refer to [LICENSE](https://github.com/cgcel/PaddleOCRFastAPI/blob/master/LICENSE) for more information.
+**PaddleOCRFastAPI** está licenciado sob a licença MIT. Consulte [LICENÇA](https://github.com/cgcel/PaddleOCRFastAPI/blob/master/LICENSE) para mais informações.
+
+Para executar este projeto utilizando o Docker, utilize os comandos a seguir:
+
+```shell
+docker compose build
+docker compose up -d
+```
